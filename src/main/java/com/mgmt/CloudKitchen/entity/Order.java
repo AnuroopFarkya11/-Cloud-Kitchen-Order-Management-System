@@ -2,6 +2,8 @@ package com.mgmt.CloudKitchen.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,7 +37,8 @@ public class Order {
     private Date orderDate;
     private Double totalAmount;
     ///  todo have a enum for stauts
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
 
     @ManyToOne
@@ -44,7 +47,7 @@ public class Order {
 
 
     @ManyToOne
-    @JoinColumn(name = "delivery_partner_id",nullable = false)
+    @JoinColumn(name = "delivery_partner_id",nullable = true)
     private DeliveryPartner deliveryPartner;
 
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)

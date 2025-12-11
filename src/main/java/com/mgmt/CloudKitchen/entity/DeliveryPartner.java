@@ -5,7 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,5 +31,8 @@ public class DeliveryPartner {
     @OneToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id",unique = true,nullable = false)
     private AppUser user;
+
+    @OneToMany(mappedBy = "deliveryPartner")
+    private Set<Order> orders;
 
 }

@@ -28,7 +28,7 @@ public class Customer {
     private Integer id;
 
     private String firstName;
-    private String lastname;
+    private String lastName;
     private String address;
 
     @OneToOne(cascade = CascadeType.ALL)
