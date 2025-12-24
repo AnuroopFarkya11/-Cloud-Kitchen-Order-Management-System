@@ -1,5 +1,6 @@
 package com.mgmt.CloudKitchen.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,9 +28,9 @@ public class KitchenEvent {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private KitchenEventStatus status;
+    private KitchenEventStatus status = KitchenEventStatus.NEW;
 
-    private Timestamp timestamp;
+    private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
     @ManyToOne
     @JoinColumn(name = "orders_id",nullable = false)
@@ -37,6 +38,7 @@ public class KitchenEvent {
 
     @ManyToOne
     @JoinColumn(name = "staff_id", nullable = true)
+    @JsonIgnore
     private AppUser staff;
 
 }
