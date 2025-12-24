@@ -1,9 +1,6 @@
 package com.mgmt.CloudKitchen.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -49,13 +46,10 @@ public class AppUser implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
-            joinColumns = @JoinColumn(name = "app_user_id", nullable = false),
+            joinColumns = @JoinColumn(name = "app_user_id",nullable = false),
             inverseJoinColumns = @JoinColumn(name = "roles_id", nullable = false))
     private Set<Roles> roles = new HashSet<>();
 
-
-    @Enumerated(EnumType.STRING)
-    private RoleType role;
 
     @OneToOne(mappedBy = "user")
     private Customer customer;
@@ -71,7 +65,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public @Nullable String getPassword() {
-        return "";
+        return password;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.mgmt.CloudKitchen.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,8 @@ public class MenuItems {
 
     private boolean isAvailable;
 
-    @OneToMany(mappedBy = "menuItems",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "menuItems",fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<OrderItem> orderItems;
 
 

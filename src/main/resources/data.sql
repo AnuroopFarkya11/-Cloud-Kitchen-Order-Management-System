@@ -1,6 +1,15 @@
-INSERT INTO app_user (username, password,role) VALUES ('customer1','pass1','CUSTOMER');
-INSERT INTO app_user (username, password,role) VALUES ('staff1','pass2','KITCHEN_STAFF');
-INSERT INTO app_user (username, password,role) VALUES ('rider1','pass3','DELIVERY_PARTNER');
+INSERT INTO ROLES(name) VALUES ('CUSTOMER');
+INSERT INTO ROLES(name) VALUES ('KITCHEN_STAFF');
+INSERT INTO ROLES(name) VALUES ('DELIVERY_PARTNER');
+
+
+INSERT INTO app_user (username, password) VALUES ('customer1','pass1');
+INSERT INTO app_user (username, password) VALUES ('staff1','pass2');
+INSERT INTO app_user (username, password) VALUES ('rider1','pass3');
+
+INSERT INTO USER_ROLES (app_user_id,roles_id) VALUES (1,1);
+INSERT INTO USER_ROLES (app_user_id,roles_id) VALUES (2,2);
+INSERT INTO USER_ROLES (app_user_id,roles_id) VALUES (3,3);
 
 INSERT INTO customer (app_user_id,first_name, last_name,address) VALUES (1,'ALICE','Smith','123 Main St');
 

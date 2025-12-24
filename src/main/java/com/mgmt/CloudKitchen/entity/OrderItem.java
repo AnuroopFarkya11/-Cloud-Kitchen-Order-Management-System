@@ -1,5 +1,6 @@
 package com.mgmt.CloudKitchen.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,11 +30,13 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "menu_item_id",nullable = false)
+    @JsonIgnore
     private MenuItems menuItems;
 
 
     @ManyToOne
-    @JoinColumn(name = "order_id",nullable = false)
+    @JoinColumn(name = "orders",referencedColumnName = "id")
+    @JsonIgnore
     private Order order;
 
 

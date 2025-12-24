@@ -1,5 +1,6 @@
 package com.mgmt.CloudKitchen.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,9 +34,11 @@ public class Customer {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "app_user_id", nullable = false,unique = true)
+    @JsonIgnore
     private AppUser user;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Order> orders;
 
 
